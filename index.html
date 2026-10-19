@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DailyKal | אוטומציה עסקית ופתרונות AI לעסקים קטנים</title>
+  <meta name="description" content="אוטומציות, צ'אטבוטים, דפי נחיתה ומערכות בהתאמה אישית לעסקים קטנים. כל מה שלא צריך דווקא אתכם – אפשר להפוך לאוטומטי. והעסק יותר קל.">
+  <link rel="canonical" href="https://dailykal.com/">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="author" content="יסכה דהרי">
+
+  <!-- שיתוף ברשתות -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:site_name" content="DailyKal">
+  <meta property="og:title" content="DailyKal | והעסק יותר קל.">
+  <meta property="og:description" content="אוטומציה עסקית ופתרונות AI בהתאמה אישית לעסקים קטנים. כל מה שלא צריך דווקא אתכם – אפשר להפוך לאוטומטי.">
+  <meta property="og:url" content="https://dailykal.com/">
+  <meta property="og:image" content="https://dailykal.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DailyKal: והעסק יותר קל.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- נתונים מובנים לגוגל: העסק, השירותים והשאלות הנפוצות -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://dailykal.com/#business",
+        "name": "DailyKal",
+        "alternateName": "דיילי קל",
+        "slogan": "והעסק יותר קל.",
+        "description": "אוטומציה עסקית, צ'אטבוטים, דפי נחיתה ומערכות בהתאמה אישית לעסקים קטנים.",
+        "url": "https://dailykal.com/",
+        "logo": "https://dailykal.com/assets/dailykal-logo.png",
+        "image": "https://dailykal.com/og-image.png",
+        "telephone": "+972-55-466-0339",
+        "areaServed": { "@type": "Country", "name": "Israel" },
+        "availableLanguage": ["he"],
+        "founder": { "@type": "Person", "name": "יסכה דהרי", "alternateName": "Yiska Dahari" },
+        "knowsAbout": ["אוטומציה עסקית", "בינה מלאכותית לעסקים", "צ'אטבוטים", "בניית דפי נחיתה", "בניית אתרים", "פיתוח תוכנה"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "שירותים",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "אוטומציות עסקיות" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "צ'אטבוטים לוואטסאפ ולאתר" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "דפי נחיתה ואתרים" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "מערכות בהתאמה אישית" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dailykal.com/#website",
+        "url": "https://dailykal.com/",
+        "name": "DailyKal",
+        "inLanguage": "he-IL",
+        "publisher": { "@id": "https://dailykal.com/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "כמה זה עולה?", "acceptedAnswer": { "@type": "Answer", "text": "כל פתרון נבנה בהתאמה אישית, ולכן המחיר נקבע אחרי שיחת ייעוץ קצרה, כשכבר ברור מה העסק צריך." } },
+          { "@type": "Question", "name": "צריך ידע טכני?", "acceptedAnswer": { "@type": "Answer", "text": "לא. אני בונה הכול, מחברת את הכלים שכבר יש בעסק, ומסבירה בשפה פשוטה איך זה עובד." } },
+          { "@type": "Question", "name": "כמה זמן זה לוקח?", "acceptedAnswer": { "@type": "Answer", "text": "אוטומציה פשוטה עולה לאוויר תוך ימים ספורים. מערכת שלמה או אתר מורכב נבנים לפי ההיקף, ואת לוח הזמנים קובעים יחד מראש." } },
+          { "@type": "Question", "name": "ומה אם משהו מפסיק לעבוד?", "acceptedAnswer": { "@type": "Answer", "text": "אני ממשיכה ללוות גם אחרי שהפתרון עולה לאוויר, ודואגת שהוא ימשיך לעבוד." } },
+          { "@type": "Question", "name": "לאיזה עסקים זה מתאים?", "acceptedAnswer": { "@type": "Answer", "text": "לכל עסק קטן שיש בו משימות שחוזרות על עצמן: קליניקות, סטודיו, נותני שירות, חנויות, משרדים ועוד." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">דילוג לתוכן</a>
+
+  <!-- ===================== ראש הדף ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="DailyKal, לראש הדף">
+        <img src="assets/dailykal-logo.svg" alt="DailyKal" width="150" height="45">
+      </a>
+      <nav class="nav" aria-label="ניווט ראשי">
+        <a href="#services">שירותים</a>
+        <a href="#demos">דוגמאות</a>
+        <a href="#how">איך זה עובד</a>
+        <a href="#about">קצת עליי</a>
+        <a href="#faq">שאלות</a>
+      </nav>
+      <a class="btn btn-dark btn-sm js-wa" href="https://wa.me/972554660339">לשיחת ייעוץ</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== פתיחה ===================== -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>
+            <span class="eyebrow">אוטומציה עסקית ופתרונות AI לעסקים קטנים</span>
+            <span class="hero-title">והעסק<br>יותר קל.</span>
+          </h1>
+          <p class="lead">עם ההתפתחות המהירה של הטכנולוגיה והבינה המלאכותית, ביחד נוכל לנצל את ההזדמנות ולהתאים לעסק שלכם את הפתרונות הטובים ביותר.</p>
+          <div class="hero-cta">
+            <a class="btn btn-dark js-wa" href="https://wa.me/972554660339">
+              <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1L4 20z"/></svg>
+              לשיחת ייעוץ
+            </a>
+            <a class="btn btn-ghost" href="#demos">לדוגמאות חיות</a>
+          </div>
+        </div>
+
+        <!-- שמש עם "התראות" שקורות לבד -->
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="hero-sun" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="18.5"/>
+            <g class="rays">
+              <line x1="50" y1="4" x2="50" y2="25"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(30 50 50)"/>
+              <line x1="50" y1="4" x2="50" y2="25" transform="rotate(60 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(90 50 50)"/>
+              <line x1="50" y1="4" x2="50" y2="25" transform="rotate(120 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(150 50 50)"/>
+              <line x1="50" y1="4" x2="50" y2="25" transform="rotate(180 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(210 50 50)"/>
+              <line x1="50" y1="4" x2="50" y2="25" transform="rotate(240 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(270 50 50)"/>
+              <line x1="50" y1="4" x2="50" y2="25" transform="rotate(300 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(330 50 50)"/>
+            </g>
+          </svg>
+          <ul class="chips">
+            <li style="--d:0"><b>✓</b> פנייה חדשה נשמרה בטבלה <time>07:58</time></li>
+            <li style="--d:1"><b>✓</b> תזכורת לפגישה נשלחה <time>08:00</time></li>
+            <li style="--d:2"><b>✓</b> הצעת מחיר יצאה ללקוח <time>08:03</time></li>
+            <li style="--d:3"><b>✓</b> הבוט ענה על שאלה <time>08:05</time></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== מוכר לכם ===================== -->
+    <section class="section" id="pain">
+      <div class="container narrow">
+        <h2>מוכר לכם?</h2>
+        <p class="sub">סמנו מה גוזל לכם זמן בשבוע רגיל:</p>
+        <ul class="checklist" role="list">
+          <li><label><input type="checkbox"><span>עונים שוב ושוב על אותן שאלות</span></label></li>
+          <li><label><input type="checkbox"><span>מעתיקים פרטים מוואטסאפ לטבלה</span></label></li>
+          <li><label><input type="checkbox"><span>רודפים אחרי הצעות מחיר ותשלומים</span></label></li>
+          <li><label><input type="checkbox"><span>שולחים תזכורות לפגישות, אחת אחת</span></label></li>
+          <li><label><input type="checkbox"><span>מתאמים ידנית כל שינוי ביומן</span></label></li>
+          <li><label><input type="checkbox"><span>מכינים את אותו דוח בכל סוף חודש</span></label></li>
+        </ul>
+        <p class="check-result" aria-live="polite" id="check-result">כל שורה כאן היא משימה שיכולה לקרות לבד.</p>
+      </div>
+    </section>
+
+    <!-- ===================== התובנה ===================== -->
+    <section class="insight">
+      <div class="container narrow">
+        <p class="insight-title">מה שלא צריך דווקא אותך – <span>אפשר להפוך לאוטומטי.</span></p>
+        <p>כל משימה שלא דורשת שיקול דעת אנושי בזמן אמת יכולה לקרות לבד, ולפנות לכם זמן לדברים שבאמת צריכים אתכם.</p>
+      </div>
+    </section>
+
+    <!-- ===================== שירותים ===================== -->
+    <section class="section" id="services">
+      <div class="container">
+        <h2>מה אני בונה</h2>
+        <p class="sub">פתרון אחד או כמה יחד, תמיד בהתאמה אישית לעסק.</p>
+        <div class="services">
+          <article class="service reveal">
+            <svg class="s-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="10" cy="24" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="38" cy="36" r="5"/><path d="M15 24h8m0 0l10-10M23 24l10 10"/></svg>
+            <h3>אוטומציות עסקיות</h3>
+            <p>הכלים בעסק מדברים זה עם זה: פנייה נכנסת, נשמרת, מקבלת מענה ומתועדת, בלי העתק-הדבק.</p>
+          </article>
+          <article class="service reveal">
+            <svg class="s-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 36l2.5-7A15 15 0 1 1 16 34.5L8 36z"/><circle cx="18" cy="23" r="1.8"/><circle cx="24" cy="23" r="1.8"/><circle cx="30" cy="23" r="1.8"/></svg>
+            <h3>צ'אטבוטים</h3>
+            <p>בוט בוואטסאפ או באתר שעונה ללקוחות מיד, מסנן פניות וקובע תורים. גם בשתיים בלילה.</p>
+          </article>
+          <article class="service reveal">
+            <svg class="s-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="30" rx="4"/><path d="M6 16h36M12 24h14M12 30h9"/><rect x="30" y="23" width="7" height="9" rx="1.5"/></svg>
+            <h3>דפי נחיתה ואתרים</h3>
+            <p>מדף נחיתה ממוקד ועד אתר עם תהליכים ארוכים, שבנוי בדיוק סביב מה שהעסק צריך.</p>
+          </article>
+          <article class="service reveal">
+            <svg class="s-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="14" height="14" rx="3"/><rect x="27" y="7" width="14" height="14" rx="3"/><rect x="7" y="27" width="14" height="14" rx="3"/><path d="M34 27v14M27 34h14"/></svg>
+            <h3>מערכות בהתאמה אישית</h3>
+            <p>כשכלי מוכן לא סוגר את כל הפינות: מערכת שנבנית סביב הדרך שבה העסק שלכם עובד.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== דוגמאות חיות ===================== -->
+    <section class="section demos" id="demos">
+      <div class="container">
+        <h2>רגע של בוקר</h2>
+        <p class="sub">כך זה נראה בעסק אמיתי. אפשר ללחוץ ולנסות.</p>
+
+        <div class="tabs" role="tablist" aria-label="דוגמאות">
+          <button role="tab" id="tab-bot" aria-controls="panel-bot" aria-selected="true">בוט שעונה ללקוחות</button>
+          <button role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false" tabindex="-1">פנייה חדשה, בלי העתק-הדבק</button>
+          <button role="tab" id="tab-remind" aria-controls="panel-remind" aria-selected="false" tabindex="-1">תזכורות שיוצאות לבד</button>
+        </div>
+
+        <!-- דוגמה 1: לפני ואחרי בוט -->
+        <div class="panel" role="tabpanel" id="panel-bot" aria-labelledby="tab-bot">
+          <div class="panel-grid">
+            <div class="panel-copy">
+              <h3>במקום לענות לכל הודעה, הבוט עונה</h3>
+              <p>לקוח שואל על תור פנוי. בלי בוט, ההודעה מחכה עד שמתפנים. עם בוט, התשובה מגיעה מיד, והתור כבר נקבע.</p>
+              <div class="switch" role="radiogroup" aria-label="מצב הדוגמה">
+                <button role="radio" aria-checked="false" data-mode="before">לפני</button>
+                <button role="radio" aria-checked="true" data-mode="after">אחרי</button>
+              </div>
+              <p class="stat" id="bot-stat"><b>0 דקות</b> המתנה לתשובה</p>
+            </div>
+            <div class="phone" aria-label="הדגמת שיחה בוואטסאפ">
+              <div class="phone-top"><span class="avatar" aria-hidden="true"></span><div><b>סטודיו לדוגמה</b><small id="bot-status">מחובר</small></div></div>
+              <ol class="chat" id="chat" aria-live="polite"></ol>
+              <button class="replay" id="chat-replay" type="button">↻ להפעלה מחדש</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- דוגמה 2: זרימת אוטומציה -->
+        <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow" hidden>
+          <div class="panel-grid">
+            <div class="panel-copy">
+              <h3>פנייה נכנסת, וכל השאר קורה לבד</h3>
+              <p>הודעה מלקוח חדש מפעילה שרשרת: הפרטים נשמרים, הלקוח מקבל מענה, ואתם מקבלים התראה. אף אחד לא מעתיק כלום.</p>
+              <button class="btn btn-dark" id="flow-run" type="button">להפעלת הדוגמה</button>
+              <p class="stat" id="flow-stat">4 פעולות · <b>0</b> העתק-הדבק</p>
+            </div>
+            <div class="flow" id="flow">
+              <div class="node" data-step="0"><span class="dot"></span><div><b>הודעה חדשה בוואטסאפ</b><small>"היי, אשמח לפרטים על סדנה"</small></div></div>
+              <div class="node" data-step="1"><span class="dot"></span><div><b>הפרטים נשמרים בטבלת לקוחות</b><small>שם, טלפון, נושא הפנייה, תאריך</small></div></div>
+              <div class="node" data-step="2"><span class="dot"></span><div><b>הלקוח מקבל מענה ומחירון</b><small>תוך פחות מדקה</small></div></div>
+              <div class="node" data-step="3"><span class="dot"></span><div><b>התראה אליכם בטלפון</b><small>"ליד חדש: סדנה, 08:14"</small></div></div>
+              <div class="node" data-step="4"><span class="dot"></span><div><b>תזכורת מעקב אחרי יומיים</b><small>אם הלקוח עוד לא חזר</small></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- דוגמה 3: תזכורות -->
+        <div class="panel" role="tabpanel" id="panel-remind" aria-labelledby="tab-remind" hidden>
+          <div class="panel-grid">
+            <div class="panel-copy">
+              <h3>יום לפני כל פגישה, התזכורת כבר יצאה</h3>
+              <p>בכל ערב, המערכת עוברת על היומן של מחר ושולחת לכל לקוח תזכורת עם כפתור אישור. מי שלא מגיע, משחרר את התור מראש.</p>
+              <button class="btn btn-dark" id="remind-run" type="button">להפעלת הדוגמה</button>
+              <p class="stat" id="remind-stat">תזכורות שנשלחו: <b>0</b> מתוך 5</p>
+            </div>
+            <div class="agenda" id="agenda">
+              <div class="agenda-head">מחר · יום שלישי</div>
+              <ul role="list">
+                <li><time>09:00</time><span>ייעוץ ראשוני</span><em></em></li>
+                <li><time>10:30</time><span>פגישת המשך</span><em></em></li>
+                <li><time>12:00</time><span>טיפול</span><em></em></li>
+                <li><time>14:30</time><span>סדנה קבוצתית</span><em></em></li>
+                <li><time>17:00</time><span>שיחת היכרות</span><em></em></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== מחשבון ===================== -->
+    <section class="section calc-section">
+      <div class="container narrow">
+        <h2>כמה זמן אפשר להחזיר לעסק?</h2>
+        <p class="sub">הערכה מהירה של הזמן שהולך על משימות חוזרות.</p>
+        <div class="calc">
+          <label for="c-times">כמה פעמים ביום עושים משימה חוזרת? <output id="o-times">12</output></label>
+          <input id="c-times" type="range" min="1" max="60" value="12">
+          <label for="c-mins">כמה דקות לוקחת כל פעם? <output id="o-mins">4</output></label>
+          <input id="c-mins" type="range" min="1" max="30" value="4">
+          <div class="calc-out" aria-live="polite">
+            <div><b id="o-hours">17.6</b><span>שעות בחודש</span></div>
+            <div><b id="o-days">2.2</b><span>ימי עבודה בחודש</span></div>
+          </div>
+          <p class="note">לפי 22 ימי עבודה בחודש. הערכה בלבד: החיסכון בפועל תלוי בתהליך.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== איך זה עובד ===================== -->
+    <section class="section" id="how">
+      <div class="container">
+        <h2>איך זה עובד</h2>
+        <ol class="steps" role="list">
+          <li class="reveal"><span class="step-n">1</span><h3>מקשיבים</h3><p>שיחת ייעוץ קצרה על מה שמעמיס על העסק, ואיפה הולך הכי הרבה זמן.</p></li>
+          <li class="reveal"><span class="step-n">2</span><h3>מתאימים</h3><p>הצעה לפתרון שבנוי בדיוק לעסק שלכם, עם הכלים שכבר יש בו.</p></li>
+          <li class="reveal"><span class="step-n">3</span><h3>בונים ומלווים</h3><p>הפתרון עולה לאוויר ומתחיל לעבוד, ואני ממשיכה ללוות.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== עליי ===================== -->
+    <section class="section about" id="about">
+      <div class="container about-inner">
+        <div class="about-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="18.5"/><g class="rays"><line x1="50" y1="4" x2="50" y2="25"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(30 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(60 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(90 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(120 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(150 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(180 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(210 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(240 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(270 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(300 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(330 50 50)"/></g></svg>
+          <span class="years"><b>10</b> שנות פיתוח תוכנה</span>
+        </div>
+        <div>
+          <h2>נעים להכיר, יסכה</h2>
+          <p class="about-text">אחרי עשר שנים כמפתחת תוכנה, הקמתי את DailyKal מתוך אמונה פשוטה: היום כל עסק יכול לקבל פתרון שמותאם בדיוק אליו, לא רק חברות גדולות. כמעט כל מה שלא דורש שיקול דעת אנושי בזמן אמת יכול לקרות לבד.</p>
+          <p class="about-text">התהליך מתחיל בהקשבה: מה גוזל זמן, מה מתסכל, מה נופל בין הכיסאות. משם אני בונה את הפתרון, מאוטומציה קטנה ועד מערכת שלמה, כדי שהעסק שלכם יהיה יותר קל.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== שאלות ===================== -->
+    <section class="section" id="faq">
+      <div class="container narrow">
+        <h2>שאלות נפוצות</h2>
+        <div class="faq">
+          <details><summary>כמה זה עולה?</summary><p>כל פתרון נבנה בהתאמה אישית, ולכן המחיר נקבע אחרי שיחת ייעוץ קצרה, כשכבר ברור מה העסק צריך.</p></details>
+          <details><summary>צריך ידע טכני?</summary><p>לא. אני בונה הכול, מחברת את הכלים שכבר יש בעסק, ומסבירה בשפה פשוטה איך זה עובד.</p></details>
+          <details><summary>כמה זמן זה לוקח?</summary><p>אוטומציה פשוטה עולה לאוויר תוך ימים ספורים. מערכת שלמה או אתר מורכב נבנים לפי ההיקף, ואת לוח הזמנים קובעים יחד מראש.</p></details>
+          <details><summary>ומה אם משהו מפסיק לעבוד?</summary><p>אני ממשיכה ללוות גם אחרי שהפתרון עולה לאוויר, ודואגת שהוא ימשיך לעבוד.</p></details>
+          <details><summary>לאיזה עסקים זה מתאים?</summary><p>לכל עסק קטן שיש בו משימות שחוזרות על עצמן: קליניקות, סטודיו, נותני שירות, חנויות, משרדים ועוד.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== סיום ===================== -->
+    <section class="final">
+      <div class="container narrow final-inner">
+        <svg class="cup" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="86" fill="#F3EADB"/>
+          <circle cx="100" cy="100" r="72" fill="none" stroke="#E2D3BA" stroke-width="2"/>
+          <rect x="146" y="90" width="38" height="20" rx="10" fill="#FBF8F1"/>
+          <circle cx="100" cy="100" r="58" fill="#FBF8F1" stroke="#EADFCB" stroke-width="3"/>
+          <circle cx="100" cy="100" r="47" fill="#5A3A26"/>
+          <circle cx="100" cy="100" r="43" fill="#9E6B43"/>
+          <g transform="translate(78 78) scale(.44)" fill="#F6E9D2" stroke="#F6E9D2" stroke-width="6.5">
+            <circle cx="50" cy="50" r="18.5" stroke="none"/>
+            <line x1="50" y1="4" x2="50" y2="25"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(30 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(60 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(90 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(120 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(150 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(180 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(210 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(240 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(270 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(300 50 50)"/><line x1="50" y1="4" x2="50" y2="25" transform="rotate(330 50 50)"/>
+          </g>
+          <g class="steam" fill="none" stroke="#F3EADB" stroke-width="3" stroke-linecap="round" opacity=".7">
+            <path d="M88 30c-6-8 6-12 0-20"/><path d="M100 26c-6-8 6-12 0-20"/><path d="M112 30c-6-8 6-12 0-20"/>
+          </g>
+        </svg>
+        <h2>בואו נדבר,<br>לפני שהקפה יתקרר.</h2>
+        <p>שיחת ייעוץ קצרה בוואטסאפ: מספרים מה מעמיס על העסק, ומתחילים לחשוב יחד מה אפשר להעביר לאוטומטי.</p>
+        <a class="btn btn-sun js-wa" href="https://wa.me/972554660339">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1L4 20z"/></svg>
+          לשיחת ייעוץ
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== תחתית ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="assets/dailykal-logo.svg" alt="DailyKal" width="130" height="39" loading="lazy">
+      <p>אוטומציה עסקית ופתרונות AI לעסקים קטנים · יסכה דהרי</p>
+      <p><a class="js-wa" href="https://wa.me/972554660339">וואטסאפ: 055-4660339</a></p>
+      <p class="footer-tag">והעסק יותר קל. · © <span id="year">2026</span> DailyKal</p>
+    </div>
+  </footer>
+
+  <!-- כפתור צף בטלפון -->
+  <a class="wa-float js-wa" href="https://wa.me/972554660339" aria-label="לשיחת ייעוץ בוואטסאפ">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1L4 20z"/></svg>
+    <span>לשיחת ייעוץ</span>
+  </a>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
