@@ -300,7 +300,7 @@
 
         <!-- דוגמה 1: לפני ואחרי בוט -->
         <div class="panel" role="tabpanel" id="panel-bot" aria-labelledby="tab-bot">
-          <div class="panel-grid">
+          <div class="panel-grid bot-grid">
             <div class="panel-copy">
               <h3>במקום לענות לכל הודעה, הבוט עונה</h3>
               <p>לקוח שואל על תור פנוי. בלי בוט, ההודעה מחכה עד שמתפנים. עם בוט, התשובה מגיעה מיד, והתור כבר נקבע.</p>
@@ -311,10 +311,25 @@
               </div>
               <p class="stat" id="bot-stat"><b>0 דקות</b> המתנה לתשובה</p>
             </div>
-            <div class="phone" aria-label="הדגמת שיחה בוואטסאפ">
-              <div class="phone-top"><span class="avatar" aria-hidden="true"></span><div><b>סטודיו לדוגמה</b><small id="bot-status">מחובר</small></div></div>
-              <ol class="chat" id="chat" aria-live="polite"></ol>
-              <button class="replay" id="chat-replay" type="button">↻ להפעלה מחדש</button>
+            <div class="phones">
+              <figure class="phone-col" data-mode="before">
+                <figcaption class="phone-label before">לפני · בלי בוט</figcaption>
+                <div class="phone" aria-label="הדגמת שיחה בוואטסאפ: לפני · בלי בוט">
+                  <div class="phone-top"><span class="avatar" aria-hidden="true"></span><div><b>סטודיו לדוגמה</b><small class="chat-status">נראה לאחרונה ב-07:30</small></div></div>
+                  <ol class="chat" aria-live="polite"></ol>
+                  <button class="replay" type="button">↻ להפעלה מחדש</button>
+                </div>
+                <p class="stat phone-stat"><b>3.5 שעות</b> המתנה לתשובה, והלקוח הלך</p>
+              </figure>
+              <figure class="phone-col active" data-mode="after">
+                <figcaption class="phone-label after">אחרי · עם בוט</figcaption>
+                <div class="phone" aria-label="הדגמת שיחה בוואטסאפ: אחרי · עם בוט">
+                  <div class="phone-top"><span class="avatar" aria-hidden="true"></span><div><b>סטודיו לדוגמה</b><small class="chat-status">מחובר</small></div></div>
+                  <ol class="chat" aria-live="polite"></ol>
+                  <button class="replay" type="button">↻ להפעלה מחדש</button>
+                </div>
+                <p class="stat phone-stat"><b>0 דקות</b> המתנה לתשובה</p>
+              </figure>
             </div>
           </div>
         </div>

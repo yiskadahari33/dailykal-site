@@ -58,9 +58,9 @@
   });
 
   // ---------- Demo 1: chat before / after a bot ----------
-  const chat = $("#chat");
-  const status = $("#bot-status");
+  // Desktop: "before" and "after" phones play side by side. Mobile: one phone + the before/after switch.
   const botStat = $("#bot-stat");
+  const sideBySide = matchMedia("(min-width: 861px)");
   const scripts = {
     before: {
       status: "נראה לאחרונה ב-07:30",
@@ -87,38 +87,49 @@
     },
   };
   let mode = "after";
-  let run = 0;
-  const bubble = (kind, text, time) => {
+  const cols = Object.fromEntries($$(".phone-col").map(col => [col.dataset.mode, { col, chat: $(".chat", col), run: 0 }]));
+  // the bot's messages (and its "typing…") sit next to a small robot avatar, like in WhatsApp
+  const BOT_AVA = `<span class="bot-ava" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="6" fill="#FBF8F1" stroke="#C9BFB0"/><rect x="5.5" y="7.5" width="13" height="9" rx="4.5" fill="#1C1A17"/><rect x="8.6" y="10" width="2" height="3.4" rx="1" fill="#FFD700"/><rect x="13.4" y="10" width="2" height="3.4" rx="1" fill="#FFD700"/><line x1="12" y1="5" x2="12" y2="2.6" stroke="#1C1A17" stroke-width="1.4" stroke-linecap="round"/><circle cx="12" cy="2.2" r="1.3" fill="#FFD700"/></svg></span>`;
+  const bubble = (chat, kind, text, time) => {
     const li = document.createElement("li");
-    li.className = `msg ${kind === "bot" ? "out bot" : kind}`;
-    if (kind === "typing") li.innerHTML = "<i></i><i></i><i></i>";
-    else li.innerHTML = `${text}${time ? `<time>${time}</time>` : ""}`;
+    const body = kind === "typing" ? "<i></i><i></i><i></i>" : `${text}${time ? `<time>${time}</time>` : ""}`;
+    if (kind === "bot" || kind === "typing") {
+      li.className = "row bot-row";
+      li.innerHTML = `<div class="msg out bot${kind === "typing" ? " typing" : ""}">${body}</div>${BOT_AVA}`;
+    } else {
+      li.className = `msg ${kind}`;
+      li.innerHTML = body;
+    }
     chat.append(li);
     return li;
   };
-  async function playChat() {
-    const id = ++run;
-    const s = scripts[mode];
-    chat.innerHTML = "";
-    status.textContent = s.status;
-    botStat.innerHTML = s.stat;
+  async function playOne(m) {
+    const c = cols[m], id = ++c.run, s = scripts[m];
+    c.chat.innerHTML = "";
     for (const [kind, text, time, delay] of s.lines) {
       await wait(delay);
-      if (id !== run) return;
+      if (id !== c.run) return;
       if (kind === "typing") {
-        const t = bubble("typing");
+        const t = bubble(c.chat, "typing");
         await wait(900);
         t.remove();
-        if (id !== run) return;
-      } else bubble(kind, text, time);
+        if (id !== c.run) return;
+      } else bubble(c.chat, kind, text, time);
     }
+  }
+  function playChat() {
+    if (sideBySide.matches) { playOne("before"); playOne("after"); return; }
+    Object.values(cols).forEach(c => c.col.classList.toggle("active", c.col.dataset.mode === mode));
+    botStat.innerHTML = scripts[mode].stat;
+    playOne(mode);
   }
   $$(".switch button").forEach(b => b.addEventListener("click", () => {
     mode = b.dataset.mode;
     $$(".switch button").forEach(x => x.setAttribute("aria-checked", x === b));
     playChat();
   }));
-  $("#chat-replay").addEventListener("click", playChat);
+  $$(".phone-col .replay").forEach(b => b.addEventListener("click", playChat));
+  sideBySide.addEventListener("change", playChat);
 
   // ---------- Demo 2: automation flow ----------
   const flow = $("#flow");
@@ -177,6 +188,9 @@
   addEventListener("scroll", tryAutoplay, { passive: true });
   tabs.forEach(t => t.addEventListener("click", () => setTimeout(tryAutoplay, 50)));
   tryAutoplay();
+  // also fire when a demo panel enters the screen (covers restored scroll positions and programmatic jumps)
+  const apIO = new IntersectionObserver(() => tryAutoplay(), { threshold: [0, .25, .5] });
+  $$(".panel").forEach(p => apIO.observe(p));
 
   // ---------- Time calculator ----------
   const times = $("#c-times"), mins = $("#c-mins");
