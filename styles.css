@@ -376,14 +376,12 @@ h3 { font-size: 21px; margin-bottom: 6px; }
   position: fixed; bottom: 18px; inset-inline-start: 18px; z-index: 60;
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
   background: var(--wa); color: #fff; font-weight: 600; font-size: 16px;
-  padding: 13px; border-radius: 50%; box-shadow: 0 10px 26px rgba(28, 26, 23, .25);
+  width: 60px; height: 60px; padding: 0; justify-content: center; border-radius: 50%; box-shadow: 0 8px 22px rgba(28, 26, 23, .22);
   transform: translateY(140%); transition: transform .4s var(--ease), box-shadow .25s;
 }
 .wa-float:hover { box-shadow: 0 14px 32px rgba(37, 211, 102, .45); }
 .wa-float:focus-visible { outline: 3px solid var(--black); outline-offset: 3px; }
-.wa-ico { width: 30px; height: 30px; }
-.wa-bubble { fill: none; stroke: #fff; stroke-width: 1.8; stroke-linejoin: round; }
-.wa-phone { fill: #fff; }
+.wa-ico { width: 32px; height: 32px; display: block; }
 .wa-float.show { transform: none; }
 .wa-float::before { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 0 0 0 rgba(37, 211, 102, .55); animation: wa-ping 3s ease-out infinite 2s; }
 @keyframes wa-ping { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, .5); } 60%, 100% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); } }
