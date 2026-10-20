@@ -19,7 +19,7 @@
   const hero = $(".hero");
   const onScroll = () => {
     header.classList.toggle("scrolled", scrollY > 8);
-    float.classList.toggle("show", scrollY > hero.offsetHeight * 0.7);
+    float.classList.add("show");   // the WhatsApp button stays available through the whole page
   };
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
@@ -184,13 +184,28 @@
   const calc = () => {
     const hours = times.value * mins.value * 22 / 60;
     $("#o-times").textContent = times.value;
-    $("#o-mins").textContent = mins.value;
+    // minutes shown as a digital clock (mm:00)
+    $("#o-mins .mm").textContent = String(mins.value).padStart(2, "0");
+    $("#o-mins").setAttribute("aria-label", `${mins.value} דקות`);
     $("#o-hours").textContent = fmt(hours);
     $("#o-days").textContent = fmt(hours / 8);
   };
   times.addEventListener("input", calc);
   mins.addEventListener("input", calc);
   calc();
+
+  // ---------- Pointing-hand hints: show where to click, disappear after the first try ----------
+  const hintGone = sel => { const h = $(sel); if (h) h.classList.add("gone"); };
+  $$(".switch button").forEach(b => b.addEventListener("click", () => hintGone(".switch .hint-hand")));
+  [times, mins].forEach(r => r.addEventListener("input", () => hintGone("#times-wrap .hint-hand")));
+  // park the slider hand on the thumb (range inputs run right-to-left on this page)
+  const placeSliderHand = () => {
+    const h = $("#times-wrap .hint-hand"); if (!h) return;
+    const frac = (times.value - times.min) / (times.max - times.min), w = times.offsetWidth, thumb = 22;
+    h.style.left = `${(1 - frac) * (w - thumb) + thumb / 2}px`;
+  };
+  placeSliderHand();
+  addEventListener("resize", placeSliderHand);
 
   // ---------- Reveal on scroll ----------
   const io = new IntersectionObserver(entries => entries.forEach(e => {
