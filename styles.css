@@ -362,6 +362,66 @@ h3 { font-size: 21px; margin-bottom: 6px; }
 @keyframes steam { 0%, 100% { opacity: 0; transform: translateY(6px); } 40% { opacity: 1; } 80% { opacity: 0; transform: translateY(-10px); } }
 .final h2 { font-size: clamp(34px, 6vw, 58px); margin-bottom: 18px; }
 .final p { font-size: 19px; max-width: 520px; margin-bottom: 30px; color: #F1E8D8; }
+.final .or-line { display: flex; align-items: center; gap: 14px; width: 100%; max-width: 560px; margin: 40px 0 18px; font-size: 16px; color: var(--latte); }
+.or-line::before, .or-line::after { content: ""; flex: 1; height: 1px; background: rgba(220, 198, 166, .4); }
+.lead-card { width: 100%; max-width: 560px; background: var(--cream); color: var(--black); border-radius: 24px; padding: clamp(22px, 4vw, 34px); text-align: start; box-shadow: 0 24px 50px rgba(0, 0, 0, .22); }
+
+/* ---------- טופס השארת פרטים ---------- */
+.lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 14px; }
+@media (max-width: 560px) { .lead-grid { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; border: 0; padding: 0; }
+.field.wide { grid-column: 1 / -1; }
+.field > span, .field legend { font-size: 15px; font-weight: 500; color: var(--black); padding: 0; }
+.field i { font-style: normal; color: var(--coffee); }
+.field em { font-style: normal; font-weight: 400; color: var(--muted); font-size: 13.5px; }
+.field input, .field textarea {
+  font: 400 16px var(--b); color: var(--black); background: var(--white);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 11px 14px; width: 100%;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input[dir="ltr"] { text-align: right; }
+.field textarea { resize: vertical; min-height: 84px; line-height: 1.5; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--black); box-shadow: 0 0 0 3px rgba(255, 215, 0, .55); }
+.field input::placeholder { color: #B9AD9C; }
+.field.bad input { border-color: #C0492B; }
+.err { color: #B23A1E; font-size: 13.5px; }
+.chips-pick { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chips-pick label { position: relative; cursor: pointer; }
+.chips-pick input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.chips-pick span { display: block; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--white); font-size: 15px; transition: background .2s, border-color .2s; }
+@media (max-width: 560px) { .chips-pick { gap: 6px; } .chips-pick span { padding: 7px 12px; font-size: 14.5px; } }
+.chips-pick input:checked + span { background: var(--sun); border-color: var(--sun); font-weight: 500; }
+.chips-pick input:focus-visible + span { outline: 3px solid var(--black); outline-offset: 2px; }
+.hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.lead-submit { margin-top: 22px; width: 100%; justify-content: center; }
+.lead-submit[disabled] { opacity: .6; cursor: progress; transform: none; }
+.lead-form p.lead-note { color: var(--muted); font-size: 13.5px; margin: 10px 0 0; text-align: center; max-width: none; }
+.lead-form p.lead-status { font-size: 15px; margin: 6px 0 0; text-align: center; max-width: none; color: #B23A1E; }
+.lead-form p.lead-status:empty { display: none; }
+.lead-status a { color: inherit; font-weight: 500; }
+.lead-done { text-align: center; padding: 14px 0 6px; animation: fade .45s var(--ease); }
+.lead-done svg { width: 64px; margin: 0 auto 14px; }
+.lead-done h3 { font-family: var(--h); font-size: 24px; margin-bottom: 6px; color: var(--black); }
+.lead-done p { color: var(--ink); font-size: 17px; margin: 0 auto; }
+
+/* ---------- פופאפ ---------- */
+.lead-modal {
+  margin: auto;   /* the global reset zeroes the dialog's own centering margin */
+  border: 0; border-radius: 26px; padding: clamp(26px, 5vw, 38px); background: var(--cream); color: var(--black);
+  width: min(540px, calc(100% - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(28, 26, 23, .35);
+}
+.lead-modal[open] { animation: pop .35s var(--ease); }
+.lead-modal::backdrop { background: rgba(28, 26, 23, .55); backdrop-filter: blur(3px); }
+@keyframes pop { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+.lead-modal h2 { font-family: var(--h); font-size: clamp(26px, 4vw, 32px); line-height: 1.2; margin: 0 0 8px; padding-inline-end: 40px; }
+.lead-intro { color: var(--ink); font-size: 16.5px; margin-bottom: 20px; }
+.lead-close { position: absolute; top: 16px; inset-inline-end: 16px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--sand); cursor: pointer; display: grid; place-items: center; }
+.lead-close:hover { background: var(--latte); }
+.lead-close svg { width: 20px; height: 20px; fill: none; stroke: var(--black); stroke-width: 2.2; stroke-linecap: round; }
+.lead-alt { text-align: center; color: var(--muted); font-size: 14.5px; margin-top: 14px; }
+.lead-alt a { color: var(--black); font-weight: 500; }
+html.modal-open { overflow: hidden; }
 
 /* ---------- תחתית ---------- */
 .site-footer { background: var(--cream); padding: 44px 0 100px; border-top: 1px solid var(--line); }

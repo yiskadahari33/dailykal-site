@@ -221,6 +221,76 @@
   placeSliderHand();
   addEventListener("resize", placeSliderHand);
 
+  // ---------- Lead form: end-of-page card + header popup, saved to a Google Sheet ----------
+  // The Google Apps Script web-app URL (Deploy > Web app) that appends each lead as a row
+  const LEAD_URL = "https://script.google.com/macros/s/AKfycbx3gEiHMzaS_dE9zNlKDk0fS2C9PrepQcFBSErs-g_S0WLQ2rG-qmWLz3L7cQZ4jjiY/exec";
+  const tpl = $("#lead-tpl");
+  const modal = $("#lead-modal");
+  const phoneOk = v => /^\+?\d{9,13}$/.test(v.replace(/[\s\-()]/g, ""));
+  const emailOk = v => !v || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+  $$("[data-lead-slot]").forEach(slot => {
+    slot.append(tpl.content.cloneNode(true));
+    const form = $(".lead-form", slot), done = $(".lead-done", slot);
+    const status = $(".lead-status", form), submit = $(".lead-submit", form);
+    const checks = { name: v => v.length >= 2, phone: phoneOk, email: emailOk };
+    const validate = el => {
+      const ok = checks[el.name](el.value.trim()), field = el.closest(".field");
+      field.classList.toggle("bad", !ok);
+      $(".err", field).hidden = ok;
+      el.setAttribute("aria-invalid", !ok);
+      return ok;
+    };
+    Object.keys(checks).forEach(n => {
+      const el = form.elements[n];
+      el.addEventListener("blur", () => { if (el.value.trim()) validate(el); });
+      el.addEventListener("input", () => { if (el.closest(".bad")) validate(el); });
+    });
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const bad = Object.keys(checks).map(n => form.elements[n]).filter(el => !validate(el));
+      if (bad.length) { bad[0].focus(); return; }
+      const f = form.elements;
+      const data = {
+        name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(),
+        time: f.time.value, message: f.message.value.trim(), company: f.company.value,
+        source: slot.dataset.leadSlot,
+      };
+      submit.disabled = true; submit.textContent = "שולחים..."; status.textContent = "";
+      try {
+        // a plain-text body keeps this a "simple" request, so Apps Script needs no CORS preflight
+        const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), 15000);
+        const res = await fetch(LEAD_URL, { method: "POST", body: JSON.stringify(data), signal: ctrl.signal });
+        clearTimeout(t);
+        const out = await res.json();
+        if (!out.ok) throw new Error(out.error || "failed");
+        form.reset();
+        form.hidden = true; done.hidden = false;
+      } catch {
+        status.innerHTML = 'משהו השתבש בשליחה. אפשר לנסות שוב, או להתקשר ל-<a href="tel:+972554660339" dir="ltr">055-4660339</a>';
+      } finally {
+        submit.disabled = false; submit.textContent = "לשליחת הפרטים";
+      }
+    });
+  });
+
+  const openModal = () => {
+    // after a successful send, the popup opens with a fresh form again
+    const slot = $("[data-lead-slot]", modal);
+    $(".lead-form", slot).hidden = false; $(".lead-done", slot).hidden = true;
+    modal.showModal();
+    document.documentElement.classList.add("modal-open");
+  };
+  $$(".js-lead").forEach(b => b.addEventListener("click", openModal));
+  $(".lead-close", modal).addEventListener("click", () => modal.close());
+  // a click outside the dialog box (on the backdrop) closes it
+  modal.addEventListener("click", e => {
+    const r = modal.getBoundingClientRect();
+    if (e.target === modal && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) modal.close();
+  });
+  modal.addEventListener("close", () => document.documentElement.classList.remove("modal-open"));
+
   // ---------- Reveal on scroll ----------
   const io = new IntersectionObserver(entries => entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
