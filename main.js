@@ -229,6 +229,41 @@
   const phoneOk = v => /^\+?\d{9,13}$/.test(v.replace(/[\s\-()]/g, ""));
   const emailOk = v => !v || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 
+  // ---------- Visit counter for the private dashboard in the same Google Sheet ----------
+  // Anonymous: no cookies, no IP. One row per browser session. The owner opens dailykal.com/?me=1
+  // once on each of her devices so her own visits are not counted (?me=0 undoes it).
+  const store = (kind, key, val) => {
+    try {
+      const s = window[kind];
+      if (val === undefined) return s.getItem(key);
+      val === null ? s.removeItem(key) : s.setItem(key, val);
+    } catch { return null; }
+  };
+  const qs = new URLSearchParams(location.search);
+  if (qs.get("me") === "1") store("localStorage", "dk-me", "1");
+  if (qs.get("me") === "0") store("localStorage", "dk-me", null);
+  // where this session came from: a ?from= tag on our links, else the referring site
+  let arrival = null;
+  try { arrival = JSON.parse(store("sessionStorage", "dk-src") || "null"); } catch {}
+  if (!arrival) {
+    let ref = "";
+    try { ref = document.referrer ? new URL(document.referrer).host : ""; } catch { ref = document.referrer.slice(0, 120); }
+    arrival = { from: qs.get("from") || qs.get("utm_source") || "", ref };
+    store("sessionStorage", "dk-src", JSON.stringify(arrival));
+    const skip = store("localStorage", "dk-me") === "1" || navigator.webdriver ||
+      /bot|crawl|spider|preview|lighthouse/i.test(navigator.userAgent) || !/dailykal\.com$/.test(location.hostname);
+    if (!skip) {
+      const ua = navigator.userAgent;
+      const device = /iPad|Tablet/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? "טאבלט"
+        : /Mobi|Android|iPhone/i.test(ua) ? "טלפון" : "מחשב";
+      const body = JSON.stringify({ type: "visit", ...arrival, device, page: location.pathname });
+      // a plain-text beacon still reaches the script if the visitor leaves right away
+      if (!(navigator.sendBeacon && navigator.sendBeacon(LEAD_URL, new Blob([body], { type: "text/plain" })))) {
+        fetch(LEAD_URL, { method: "POST", body, mode: "no-cors", keepalive: true }).catch(() => {});
+      }
+    }
+  }
+
   $$("[data-lead-slot]").forEach(slot => {
     slot.append(tpl.content.cloneNode(true));
     const form = $(".lead-form", slot), done = $(".lead-done", slot);
@@ -255,7 +290,7 @@
       const data = {
         name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(),
         time: f.time.value, message: f.message.value.trim(), company: f.company.value,
-        source: slot.dataset.leadSlot,
+        source: slot.dataset.leadSlot, ...arrival,
       };
       submit.disabled = true; submit.textContent = "שולחים..."; status.textContent = "";
       try {
